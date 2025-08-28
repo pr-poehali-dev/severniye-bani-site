@@ -61,12 +61,34 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Банная цветовая схема
+				wood: {
+					50: '#FDF8F3',
+					100: '#F5DEB3',
+					200: '#DEB887',
+					300: '#D2691E',
+					400: '#B8860B',
+					500: '#8B4513',
+					600: '#654321',
+					700: '#2F1B14',
+					800: '#1A0E0A',
+					900: '#0F0706',
+				},
+				sauna: {
+					light: '#F5DEB3',
+					DEFAULT: '#8B4513',
+					dark: '#2F1B14',
 				}
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
+			},
+			fontFamily: {
+				heading: ['Merriweather', 'serif'],
+				body: ['Open Sans', 'sans-serif'],
 			},
 			keyframes: {
 				'accordion-down': {
