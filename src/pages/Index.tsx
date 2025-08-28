@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import Icon from '@/components/ui/icon';
@@ -8,283 +8,480 @@ import Icon from '@/components/ui/icon';
 export default function Index() {
   const services = [
     {
-      title: 'Парение с березовыми вениками',
-      description: 'Традиционные процедуры с настоящими березовыми вениками для очищения и оздоровления',
-      price: '1500₽',
-      duration: '60 мин',
+      title: 'Русская баня на дровах',
+      description: 'Традиционная парная на березовых дровах с веничным массажем',
+      price: 'от 1800₽/час',
+      features: ['Парная до 90°C', 'Березовые веники', 'Купель с холодной водой']
+    },
+    {
+      title: 'VIP зал',
+      description: 'Премиальный отдых в отдельном зале с комфортной зоной',
+      price: 'от 3500₽/час',
+      features: ['Отдельная парная', 'Комната отдыха', 'Караоке система']
+    },
+    {
+      title: 'Банные процедуры',
+      description: 'Профессиональные банные процедуры от опытных банщиков',
+      price: 'от 2000₽',
+      features: ['Парение с веником', 'Медовый пилинг', 'Травяные настои']
+    },
+    {
+      title: 'Банкетный зал',
+      description: 'Корпоративы и торжества в уютной атмосфере бани',
+      price: 'от 5000₽',
+      features: ['До 20 человек', 'Кухня', 'Музыкальная система']
+    }
+  ];
+
+  const advantages = [
+    {
+      title: 'Новое здание',
+      description: 'Современный комплекс, построенный в 2023 году',
+      icon: 'Building2'
+    },
+    {
+      title: 'Экологичность',
+      description: 'Натуральные материалы: дуб, липа, кедр',
       icon: 'Leaf'
     },
     {
-      title: 'Ароматерапия',
-      description: 'Эфирные масла хвои, мяты и эвкалипта для полного расслабления и восстановления',
-      price: '800₽',
-      duration: '30 мин',
-      icon: 'Flower2'
+      title: 'Безопасность',
+      description: 'Система контроля воздуха и современная вентиляция',
+      icon: 'Shield'
     },
     {
-      title: 'Общий сеанс в парной',
-      description: 'Классическая русская баня с оптимальной температурой и влажностью',
-      price: '2000₽',
-      duration: '120 мин',
-      icon: 'Thermometer'
-    },
-    {
-      title: 'Массаж с медом',
-      description: 'Целебный массаж натуральным медом после банных процедур',
-      price: '2500₽',
-      duration: '45 мин',
-      icon: 'Heart'
+      title: 'Удобство',
+      description: 'Парковка, раздевалки, душевые, комнаты отдыха',
+      icon: 'Car'
     }
   ];
 
-  const reviews = [
-    {
-      name: 'Анна Петрова',
-      rating: 5,
-      text: 'Потрясающая атмосфера! Настоящая русская баня с душой. Парение с вениками — это что-то невероятное!',
-      date: 'Август 2024'
-    },
-    {
-      name: 'Михаил Волков',
-      rating: 5,
-      text: 'Хожу уже полгода. Отличный сервис, чистота, профессиональные банщики. Рекомендую всем!',
-      date: 'Июль 2024'
-    },
-    {
-      name: 'Елена Смирнова',
-      rating: 5,
-      text: 'Ароматерапия просто волшебная! После сеанса чувствуешь себя обновленной. Спасибо!',
-      date: 'Июнь 2024'
-    }
-  ];
-
-  const prices = [
-    { service: 'Индивидуальный сеанс (2 часа)', price: '3000₽' },
-    { service: 'Семейный сеанс (3 часа)', price: '4500₽' },
-    { service: 'Корпоративное мероприятие', price: 'от 8000₽' },
-    { service: 'Аренда на день', price: '15000₽' }
+  const schedule = [
+    { day: 'Понедельник', time: '10:00 - 23:00', price: '1800₽/час' },
+    { day: 'Вторник', time: '10:00 - 23:00', price: '1800₽/час' },
+    { day: 'Среда', time: '10:00 - 23:00', price: '1800₽/час' },
+    { day: 'Четверг', time: '10:00 - 23:00', price: '1800₽/час' },
+    { day: 'Пятница', time: '10:00 - 01:00', price: '2200₽/час' },
+    { day: 'Суббота', time: '10:00 - 01:00', price: '2200₽/час' },
+    { day: 'Воскресенье', time: '10:00 - 23:00', price: '2000₽/час' }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-wood-50 to-wood-100">
+    <div className="min-h-screen bg-background">
+      {/* Верхняя полоса */}
+      <div className="bg-primary text-primary-foreground py-2 text-center text-sm font-medium">
+        📞 Звоните: +7 (495) 123-45-67 | 📧 info@severniye-bani.ru | 🕐 Работаем ежедневно с 10:00
+      </div>
+
       {/* Шапка */}
-      <header className="bg-wood-700/95 backdrop-blur-sm text-wood-50 sticky top-0 z-50">
+      <header className="bg-white shadow-sm sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-wood-500 rounded-full flex items-center justify-center">
-                <Icon name="Waves" size={24} className="text-wood-50" />
+            <div className="flex items-center space-x-4">
+              <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
+                <Icon name="Waves" size={28} className="text-primary-foreground" />
               </div>
-              <h1 className="text-2xl font-heading font-bold">Северные Бани</h1>
+              <div>
+                <h1 className="text-2xl font-bold text-primary">Северные бани</h1>
+                <p className="text-sm text-muted-foreground">Новая общественная баня на Севере Москвы</p>
+              </div>
             </div>
-            <nav className="hidden md:flex space-x-8 font-body">
-              <a href="#services" className="hover:text-wood-300 transition-colors">Услуги</a>
-              <a href="#prices" className="hover:text-wood-300 transition-colors">Прайс</a>
-              <a href="#gallery" className="hover:text-wood-300 transition-colors">Галерея</a>
-              <a href="#reviews" className="hover:text-wood-300 transition-colors">Отзывы</a>
-              <a href="#contacts" className="hover:text-wood-300 transition-colors">Контакты</a>
+            <nav className="hidden md:flex space-x-8">
+              <a href="#services" className="text-foreground hover:text-primary font-medium transition-colors">Услуги</a>
+              <a href="#schedule" className="text-foreground hover:text-primary font-medium transition-colors">Расписание</a>
+              <a href="#about" className="text-foreground hover:text-primary font-medium transition-colors">О бане</a>
+              <a href="#contacts" className="text-foreground hover:text-primary font-medium transition-colors">Контакты</a>
             </nav>
+            <Button className="bg-primary hover:bg-primary/90">
+              <Icon name="Phone" className="mr-2" size={16} />
+              Забронировать
+            </Button>
           </div>
         </div>
       </header>
 
-      {/* Герой блок */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
+      {/* Главный блок */}
+      <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-700 text-white">
+        <div className="absolute inset-0 bg-black/30 z-10"></div>
+        <div className="absolute inset-0">
           <img
-            src="/img/57d72f5c-236e-40a6-8bfa-921159b98598.jpg"
-            alt="Русская баня"
+            src="/img/9f9ca5e3-6c8b-4990-9f80-8b02071186b2.jpg"
+            alt="Северные бани"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-wood-900/50"></div>
         </div>
         
-        <div className="relative z-10 text-center text-wood-50 px-4">
-          <h2 className="text-6xl md:text-8xl font-heading font-bold mb-6 animate-fade-in">
-            Северные Бани
-          </h2>
-          <p className="text-xl md:text-2xl font-body mb-8 max-w-2xl mx-auto animate-fade-in">
-            Традиции русского парения в сердце города. Аутентичная атмосфера, 
-            профессиональные банщики и целебные процедуры
-          </p>
-          <Button size="lg" className="bg-wood-600 hover:bg-wood-500 text-wood-50 font-body text-lg px-8 py-4 animate-scale-in">
-            <Icon name="Phone" className="mr-2" size={20} />
-            Забронировать
-          </Button>
-        </div>
-      </section>
-
-      {/* О нас */}
-      <section className="py-20 bg-wood-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h3 className="text-4xl font-heading font-bold text-wood-800 mb-8">О наших банях</h3>
-            <p className="text-lg font-body text-wood-700 mb-6 leading-relaxed">
-              «Северные Бани» — это место, где современные технологии встречаются с вековыми традициями русского парения. 
-              Наши мастера банного дела с любовью передают древние секреты оздоровления через пар, 
-              создавая уникальную атмосферу релаксации и восстановления.
+        <div className="relative z-20 container mx-auto px-4 py-32">
+          <div className="max-w-3xl">
+            <Badge className="bg-primary/20 text-primary-foreground border-primary/30 mb-6">
+              🔥 Открылись в 2023 году
+            </Badge>
+            <h2 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+              Северные
+              <br />
+              <span className="text-primary">бани</span>
+            </h2>
+            <p className="text-xl md:text-2xl mb-8 text-slate-200 leading-relaxed">
+              Новая общественная баня на севере Москвы. Настоящая русская баня на дровах 
+              с традиционными процедурами и современным комфортом.
             </p>
-            <p className="text-lg font-body text-wood-700 leading-relaxed">
-              В нашем комплексе используется только натуральное дерево сибирских пород, 
-              а процедуры проводятся с применением экологически чистых материалов и эфирных масел.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Услуги */}
-      <section id="services" className="py-20 bg-wood-100">
-        <div className="container mx-auto px-4">
-          <h3 className="text-4xl font-heading font-bold text-center text-wood-800 mb-16">Наши услуги</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {services.map((service, index) => (
-              <Card key={index} className="bg-wood-50 border-wood-200 hover:shadow-lg transition-all duration-300 hover:scale-105">
-                <CardHeader className="text-center pb-4">
-                  <div className="w-16 h-16 bg-wood-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Icon name={service.icon} size={32} className="text-wood-50" />
-                  </div>
-                  <CardTitle className="font-heading text-wood-800">{service.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="font-body text-wood-600 mb-4 text-center">
-                    {service.description}
-                  </CardDescription>
-                  <div className="flex justify-between items-center">
-                    <Badge variant="secondary" className="bg-wood-200 text-wood-800 font-body">
-                      {service.duration}
-                    </Badge>
-                    <span className="font-heading font-bold text-wood-700">{service.price}</span>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Прайс */}
-      <section id="prices" className="py-20 bg-wood-50">
-        <div className="container mx-auto px-4">
-          <h3 className="text-4xl font-heading font-bold text-center text-wood-800 mb-16">Прайс-лист</h3>
-          <div className="max-w-2xl mx-auto">
-            <Card className="bg-wood-100 border-wood-300">
-              <CardHeader>
-                <CardTitle className="font-heading text-wood-800 text-center text-2xl">Стоимость услуг</CardTitle>
-              </CardHeader>
-              <CardContent>
-                {prices.map((item, index) => (
-                  <div key={index}>
-                    <div className="flex justify-between items-center py-4 font-body">
-                      <span className="text-wood-700">{item.service}</span>
-                      <span className="font-bold text-wood-800 text-lg">{item.price}</span>
-                    </div>
-                    {index < prices.length - 1 && <Separator className="bg-wood-300" />}
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Галерея */}
-      <section id="gallery" className="py-20 bg-wood-100">
-        <div className="container mx-auto px-4">
-          <h3 className="text-4xl font-heading font-bold text-center text-wood-800 mb-16">Галерея</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[1, 2, 3, 4, 5, 6].map((i) => (
-              <div key={i} className="aspect-square bg-wood-200 rounded-lg overflow-hidden hover:scale-105 transition-transform duration-300">
-                <img
-                  src="/img/57d72f5c-236e-40a6-8bfa-921159b98598.jpg"
-                  alt={`Фото бани ${i}`}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Отзывы */}
-      <section id="reviews" className="py-20 bg-wood-50">
-        <div className="container mx-auto px-4">
-          <h3 className="text-4xl font-heading font-bold text-center text-wood-800 mb-16">Отзывы гостей</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {reviews.map((review, index) => (
-              <Card key={index} className="bg-wood-100 border-wood-200">
-                <CardHeader>
-                  <div className="flex items-center justify-between">
-                    <CardTitle className="font-body text-wood-800">{review.name}</CardTitle>
-                    <div className="flex">
-                      {[...Array(review.rating)].map((_, i) => (
-                        <Icon key={i} name="Star" size={16} className="text-yellow-500 fill-current" />
-                      ))}
-                    </div>
-                  </div>
-                  <CardDescription className="font-body text-wood-500">{review.date}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="font-body text-wood-700 italic">"{review.text}"</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Контакты */}
-      <section id="contacts" className="py-20 bg-wood-700 text-wood-50">
-        <div className="container mx-auto px-4">
-          <h3 className="text-4xl font-heading font-bold text-center mb-16">Контакты</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
-            <div>
-              <h4 className="text-2xl font-heading font-bold mb-6">Наш адрес</h4>
-              <div className="space-y-4 font-body">
-                <div className="flex items-center">
-                  <Icon name="MapPin" size={20} className="mr-3" />
-                  <span>г. Архангельск, ул. Банная, 15</span>
-                </div>
-                <div className="flex items-center">
-                  <Icon name="Phone" size={20} className="mr-3" />
-                  <span>+7 (921) 123-45-67</span>
-                </div>
-                <div className="flex items-center">
-                  <Icon name="Mail" size={20} className="mr-3" />
-                  <span>info@severniye-bani.ru</span>
-                </div>
-                <div className="flex items-center">
-                  <Icon name="Clock" size={20} className="mr-3" />
-                  <span>Ежедневно с 9:00 до 23:00</span>
-                </div>
-              </div>
-            </div>
-            <div>
-              <h4 className="text-2xl font-heading font-bold mb-6">Как добраться</h4>
-              <p className="font-body text-wood-200 mb-6">
-                Мы находимся в историческом центре города, рядом с набережной Северной Двины. 
-                Удобная парковка для гостей. От вокзала — 15 минут на автобусе №7.
-              </p>
-              <Button className="bg-wood-500 hover:bg-wood-400 text-wood-50 font-body">
-                <Icon name="Navigation" className="mr-2" size={20} />
-                Построить маршрут
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8 py-6">
+                <Icon name="Calendar" className="mr-2" size={20} />
+                Забронировать сейчас
+              </Button>
+              <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 text-lg px-8 py-6">
+                <Icon name="Play" className="mr-2" size={20} />
+                Виртуальная экскурсия
               </Button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Футер */}
-      <footer className="bg-wood-900 text-wood-300 py-12">
+      {/* Преимущества */}
+      <section className="py-20 bg-slate-50">
         <div className="container mx-auto px-4">
-          <div className="text-center">
-            <div className="flex items-center justify-center space-x-3 mb-6">
-              <div className="w-8 h-8 bg-wood-600 rounded-full flex items-center justify-center">
-                <Icon name="Waves" size={20} className="text-wood-50" />
+          <div className="text-center mb-16">
+            <Badge className="bg-primary/10 text-primary mb-4">
+              Почему выбирают нас
+            </Badge>
+            <h3 className="text-4xl font-bold text-foreground mb-4">
+              Современная баня с традициями
+            </h3>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Мы объединили лучшие традиции русской бани с современными технологиями 
+              для максимального комфорта наших гостей.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {advantages.map((advantage, index) => (
+              <Card key={index} className="text-center hover:shadow-lg transition-shadow duration-300">
+                <CardHeader className="pb-4">
+                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Icon name={advantage.icon} size={32} className="text-primary" />
+                  </div>
+                  <CardTitle className="text-lg">{advantage.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">{advantage.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Услуги */}
+      <section id="services" className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <Badge className="bg-primary/10 text-primary mb-4">
+              Наши услуги
+            </Badge>
+            <h3 className="text-4xl font-bold text-foreground mb-4">
+              Выберите подходящий формат
+            </h3>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {services.map((service, index) => (
+              <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-0 bg-gradient-to-br from-slate-50 to-white">
+                <CardHeader className="pb-4">
+                  <div className="flex justify-between items-start mb-4">
+                    <CardTitle className="text-xl group-hover:text-primary transition-colors">
+                      {service.title}
+                    </CardTitle>
+                    <Badge variant="secondary" className="text-lg font-bold px-3 py-1">
+                      {service.price}
+                    </Badge>
+                  </div>
+                  <p className="text-muted-foreground text-base leading-relaxed">
+                    {service.description}
+                  </p>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-2">
+                    {service.features.map((feature, featureIndex) => (
+                      <div key={featureIndex} className="flex items-center">
+                        <Icon name="Check" size={16} className="text-primary mr-2 flex-shrink-0" />
+                        <span className="text-sm text-muted-foreground">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <Button className="w-full mt-6 bg-primary hover:bg-primary/90">
+                    Подробнее и бронирование
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Расписание и цены */}
+      <section id="schedule" className="py-20 bg-slate-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <Badge className="bg-primary/10 text-primary mb-4">
+              Расписание работы
+            </Badge>
+            <h3 className="text-4xl font-bold text-foreground mb-4">
+              Работаем каждый день
+            </h3>
+            <p className="text-lg text-muted-foreground">
+              Удобное время для посещения в любой день недели
+            </p>
+          </div>
+          
+          <div className="max-w-2xl mx-auto">
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-center text-2xl">График работы и цены</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  {schedule.map((item, index) => (
+                    <div key={index}>
+                      <div className="flex justify-between items-center py-3">
+                        <div className="flex-1">
+                          <span className="font-semibold">{item.day}</span>
+                        </div>
+                        <div className="flex-1 text-center">
+                          <span className="text-muted-foreground">{item.time}</span>
+                        </div>
+                        <div className="flex-1 text-right">
+                          <Badge variant="outline" className="font-semibold">
+                            {item.price}
+                          </Badge>
+                        </div>
+                      </div>
+                      {index < schedule.length - 1 && <Separator />}
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-6 p-4 bg-slate-50 rounded-lg">
+                  <p className="text-sm text-muted-foreground text-center">
+                    💡 Минимальное время бронирования — 2 часа. Скидки для постоянных клиентов.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* О бане */}
+      <section id="about" className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <Badge className="bg-primary/10 text-primary mb-4">
+                О наших банях
+              </Badge>
+              <h3 className="text-4xl font-bold text-foreground mb-6">
+                Традиции русской бани в современном исполнении
+              </h3>
+              <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
+                <p>
+                  <strong className="text-foreground">Северные бани</strong> — это новый банный комплекс, 
+                  открывшийся в 2023 году на севере Москвы. Мы создали пространство, где традиционная 
+                  русская баня встречается с современным комфортом.
+                </p>
+                <p>
+                  Наша парная построена по всем канонам русского банного искусства: используются 
+                  только натуральные материалы — липа, дуб и кедр. Печь топится настоящими 
+                  березовыми дровами, что создает неповторимый аромат и правильный пар.
+                </p>
+                <p>
+                  В нашем комплексе есть все для полноценного банного отдыха: просторные парные, 
+                  комфортные раздевалки, душевые кабины, купель с холодной водой и уютные 
+                  комнаты отдыха.
+                </p>
               </div>
-              <span className="text-xl font-heading font-bold text-wood-50">Северные Бани</span>
+              <div className="flex flex-wrap gap-4 mt-8">
+                <Badge className="bg-green-100 text-green-800 text-sm px-3 py-1">
+                  🌿 Экологичные материалы
+                </Badge>
+                <Badge className="bg-blue-100 text-blue-800 text-sm px-3 py-1">
+                  🔥 Печь на дровах
+                </Badge>
+                <Badge className="bg-purple-100 text-purple-800 text-sm px-3 py-1">
+                  💆 Банные процедуры
+                </Badge>
+              </div>
             </div>
-            <p className="font-body text-sm">
-              © 2024 Северные Бани. Все права защищены. Традиции русского парения с 2010 года.
+            <div className="relative">
+              <div className="aspect-square rounded-2xl overflow-hidden">
+                <img
+                  src="/img/8e074b22-43fd-47c6-83fb-414af084748c.jpg"
+                  alt="Интерьер русской бани"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-xl shadow-lg border">
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-primary mb-1">2023</div>
+                  <div className="text-sm text-muted-foreground">Год открытия</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Контакты */}
+      <section id="contacts" className="py-20 bg-slate-900 text-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <Badge className="bg-primary/20 text-primary-foreground border-primary/30 mb-4">
+              Контакты
+            </Badge>
+            <h3 className="text-4xl font-bold mb-4">Как нас найти</h3>
+            <p className="text-lg text-slate-300">
+              Удобное расположение на севере Москвы с парковкой
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            <div>
+              <h4 className="text-2xl font-bold mb-8">Контактная информация</h4>
+              <div className="space-y-6">
+                <div className="flex items-start">
+                  <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                    <Icon name="MapPin" size={24} className="text-primary" />
+                  </div>
+                  <div>
+                    <h5 className="font-semibold mb-1">Адрес</h5>
+                    <p className="text-slate-300">г. Москва, САО, ул. Банная, д. 25</p>
+                    <p className="text-sm text-slate-400 mt-1">Рядом с м. Войковская</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start">
+                  <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                    <Icon name="Phone" size={24} className="text-primary" />
+                  </div>
+                  <div>
+                    <h5 className="font-semibold mb-1">Телефон</h5>
+                    <p className="text-slate-300">+7 (495) 123-45-67</p>
+                    <p className="text-sm text-slate-400 mt-1">Звоните с 10:00 до 22:00</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start">
+                  <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                    <Icon name="Mail" size={24} className="text-primary" />
+                  </div>
+                  <div>
+                    <h5 className="font-semibold mb-1">Email</h5>
+                    <p className="text-slate-300">info@severniye-bani.ru</p>
+                    <p className="text-sm text-slate-400 mt-1">Ответим в течение часа</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start">
+                  <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                    <Icon name="Clock" size={24} className="text-primary" />
+                  </div>
+                  <div>
+                    <h5 className="font-semibold mb-1">Режим работы</h5>
+                    <p className="text-slate-300">Ежедневно с 10:00 до 23:00</p>
+                    <p className="text-sm text-slate-400 mt-1">Пт-Сб до 01:00</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="mt-8 pt-8 border-t border-slate-700">
+                <Button className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-lg px-8 py-3">
+                  <Icon name="Calendar" className="mr-2" size={20} />
+                  Забронировать время
+                </Button>
+              </div>
+            </div>
+            
+            <div>
+              <h4 className="text-2xl font-bold mb-8">Как добраться</h4>
+              <div className="bg-slate-800 rounded-xl p-6 mb-6">
+                <h5 className="font-semibold mb-3 text-primary">🚇 На метро</h5>
+                <p className="text-slate-300 mb-4">
+                  От станции м. Войковская — 8 минут пешком по ул. Космонавта Волкова, 
+                  затем поворот направо на ул. Банную.
+                </p>
+                <h5 className="font-semibold mb-3 text-primary">🚗 На автомобиле</h5>
+                <p className="text-slate-300 mb-4">
+                  Собственная парковка на 20 мест. Въезд с ул. Банной. 
+                  Парковка бесплатная для гостей бани.
+                </p>
+                <h5 className="font-semibold mb-3 text-primary">🚌 Общественный транспорт</h5>
+                <p className="text-slate-300">
+                  Автобусы №№ 72, 179 до остановки "Банная улица". 
+                  От остановки 2 минуты пешком.
+                </p>
+              </div>
+              
+              <div className="bg-primary/10 border border-primary/20 rounded-xl p-6">
+                <h5 className="font-semibold mb-3">💡 Полезная информация</h5>
+                <ul className="space-y-2 text-sm text-slate-300">
+                  <li>• Бесплатная парковка для гостей</li>
+                  <li>• Предоставляем полотенца и тапочки</li>
+                  <li>• Можно заказать еду и напитки</li>
+                  <li>• Принимаем карты и наличные</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Футер */}
+      <footer className="bg-slate-950 text-slate-400 py-12 border-t border-slate-800">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            <div>
+              <div className="flex items-center space-x-3 mb-4">
+                <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+                  <Icon name="Waves" size={24} className="text-primary-foreground" />
+                </div>
+                <span className="text-xl font-bold text-white">Северные бани</span>
+              </div>
+              <p className="text-sm mb-4">
+                Новая общественная баня на севере Москвы. Традиции русского парения 
+                с современным комфортом.
+              </p>
+              <p className="text-xs text-slate-500">
+                © 2024 Северные бани. Все права защищены.
+              </p>
+            </div>
+            
+            <div>
+              <h5 className="font-semibold text-white mb-4">Услуги</h5>
+              <ul className="space-y-2 text-sm">
+                <li><a href="#services" className="hover:text-primary transition-colors">Русская баня</a></li>
+                <li><a href="#services" className="hover:text-primary transition-colors">VIP зал</a></li>
+                <li><a href="#services" className="hover:text-primary transition-colors">Банные процедуры</a></li>
+                <li><a href="#services" className="hover:text-primary transition-colors">Банкетный зал</a></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h5 className="font-semibold text-white mb-4">Контакты</h5>
+              <div className="space-y-2 text-sm">
+                <p>📞 +7 (495) 123-45-67</p>
+                <p>📧 info@severniye-bani.ru</p>
+                <p>📍 г. Москва, САО, ул. Банная, 25</p>
+                <p>🕐 Ежедневно 10:00 - 23:00</p>
+              </div>
+            </div>
+          </div>
+          
+          <Separator className="bg-slate-800" />
+          
+          <div className="mt-8 text-center text-xs text-slate-500">
+            <p>
+              Разработано с ❤️ для любителей настоящей русской бани. 
+              Все цены указаны в рублях и актуальны на {new Date().getFullYear()} год.
             </p>
           </div>
         </div>
